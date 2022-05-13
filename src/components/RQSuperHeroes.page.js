@@ -2,7 +2,10 @@
 // import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
+import {
+  useSuperHeroesData,
+  useAddSuperHeroData,
+} from "../hooks/useSuperHeroesData";
 
 // common pattern with React-Query is to describe the fetch outside the useQuery,
 // and use it as a the second argument (see below, useQuery)
@@ -12,12 +15,16 @@ import { useSuperHeroesData } from "../hooks/useSuperHeroesData";
 // };
 
 export const RQSuperHeroesPage = () => {
+  // to track the input state
+  const [name, setName] = useState("");
+  const [alterEgo, setAlterEgo] = useState("");
+  // polling
   const [polling, setPolling] = useState(100);
 
   const onSuccess = (data) => {
     console.log("Perform side effect after data fetching", data);
     const total = data.length;
-    if (total >= 4) {
+    if (total >= 8) {
       return setPolling(false);
     } else {
       setPolling(100);
@@ -67,6 +74,19 @@ export const RQSuperHeroesPage = () => {
     onError
   );
 
+  const {
+    mutate: addHero,
+    isLoading: addHeroIsLoading,
+    isError: addHeroIsError,
+    error: addHeroError,
+  } = useAddSuperHeroData();
+
+  const handleAddHeroClick = () => {
+    console.log({ name, alterEgo });
+    const hero = { name, alterEgo };
+    addHero(hero);
+  };
+
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
@@ -79,6 +99,17 @@ export const RQSuperHeroesPage = () => {
   return (
     <>
       <h2>RQ Super Heroes Page</h2>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <input
+        type="text"
+        value={alterEgo}
+        onChange={(e) => setAlterEgo(e.target.value)}
+      />
+      <button onClick={handleAddHeroClick}>Add Hero</button>
       <button onClick={refetch}>Fetch Heroes</button>
       {data?.data.map((hero) => {
         return (
@@ -91,6 +122,7 @@ export const RQSuperHeroesPage = () => {
       {/* {data.map((heroName) => {
         return <div key={heroName}>{heroName}</div>;
       })} */}
+      {addHeroIsLoading && <div>Add hero is loading</div>}
     </>
   );
 };

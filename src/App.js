@@ -14,6 +14,9 @@ import { MyRQSuperHeroesPage } from "./components/MyRQSuperHeroes.page";
 import { RQSuperHeroPage } from "./components/RQSuperHero.page";
 import { ParallelQueriesPage } from "./components/ParallelQueries.page";
 import { DynamicParallelPage } from "./components/DynamicParallel.page";
+import { DependentQueriesPage } from "./components/DependentQueries.page";
+import { PaginatedQueriesPage } from "./components/PaginatedQueries.page";
+import { InfiniteQueriesPage } from "./components/InfiniteQueries.page";
 
 const queryClient = new QueryClient();
 
@@ -40,6 +43,12 @@ function App() {
           </nav>
           {/* there's some react router v6 adjustments made here to make the tutorial work */}
           <Routes>
+            <Route path="/rq-infinite" element={<InfiniteQueriesPage />} />
+            <Route path="/rq-pagination" element={<PaginatedQueriesPage />} />
+            <Route
+              path="/rq-dependent"
+              element={<DependentQueriesPage email="vishwas@example.com" />}
+            />
             <Route
               path="/rq-dynamic"
               element={<DynamicParallelPage heroIds={[1, 3]} />}

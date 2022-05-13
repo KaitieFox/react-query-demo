@@ -24,6 +24,31 @@
       "id": 5,
       "name": "Daugherty",
       "alterEgo": "Tom"
+    },
+    {
+      "name": "Foo",
+      "alterEgo": "Bar",
+      "id": 6
+    },
+    {
+      "name": "add",
+      "alterEgo": "hero",
+      "id": 7
+    },
+    {
+      "name": "test",
+      "alterEgo": "this",
+      "id": 8
+    },
+    {
+      "name": "this",
+      "alterEgo": "that",
+      "id": 9
+    },
+    {
+      "name": "Catwoman",
+      "alterEgo": "Seline Kyle",
+      "id": 10
     }
   ],
   "friends": [
@@ -38,6 +63,56 @@
     {
       "id": 3,
       "name": "Rachel Green"
+    }
+  ],
+  "users": [
+    {
+      "id": "vishwas@example.com",
+      "channelId": "codevolution"
+    }
+  ],
+  "channels": [
+    {
+      "id": "codevolution",
+      "courses": [
+        "react",
+        "vue",
+        "angular"
+      ]
+    }
+  ],
+  "colors": [
+    {
+      "id": 1,
+      "label": "red"
+    },
+    {
+      "id": 2,
+      "label": "blue"
+    },
+    {
+      "id": 3,
+      "label": "green"
+    },
+    {
+      "id": 4,
+      "label": "yellow"
+    },
+    {
+      "id": 5,
+      "label": "black"
+    },
+    {
+      "id": 6,
+      "label": "beige"
+    },
+    {
+      "id": 7,
+      "label": "orange"
+    },
+    {
+      "id": 8,
+      "label": "purple"
     }
   ]
 }
